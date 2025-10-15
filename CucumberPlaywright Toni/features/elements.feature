@@ -32,7 +32,7 @@ Feature:Testing different elements
     @test4
   Scenario: Download and Upload
     Given the user lands on the Upload and Download page
-    When the user clicks on Download button a sample file will be downloaded and saved on PC
-    Then the sample file can be found in the Downloads folder
-    When the user clicks on the Choose File button a window will popup and the user can select a file to Upload
-    Then a confirmation message will be displayed 
+  #   When the user clicks on Download button a sample file will be downloaded and saved on PC
+  #   Then the sample file can be found in the Downloads folder
+  #   When the user clicks on the Choose File button a window will popup and the user can select a file to Upload
+  #   Then a confirmation message will be displayed

@@ -128,3 +128,59 @@ Then('a confirmation message will be visible', async function ()
     await elementsPage.confirmationTextField();
     
 });
+
+Given('the user lands on the Check Box page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const elementsPage = poManager.getElementsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await elementsPage.clickOnCheckBox();
+    console.log("the user lands on page")
+});
+
+When('the user clicks on Expand All button the entire list will be visible', async function ()
+{
+    poManager = new POmanager(this.page);
+    const elementsPage = poManager.getElementsPage();
+    await elementsPage.clickOnExpandAllButton();
+    await elementsPage.filesAndFoldersExpanded();
+});
+
+Then('the user clicks on Collapse All button the entire list will be collapsed showing the initial state', async function ()
+{
+    poManager = new POmanager(this.page);
+    const elementsPage = poManager.getElementsPage();
+    await elementsPage.clickOnCollapseAllButton();
+    await elementsPage.filesAndFoldersCollapsed();
+});
+
+When('the user clicks on Toggle button the subcategories will be visible', async function ()
+{
+    poManager = new POmanager(this.page);
+    const elementsPage = poManager.getElementsPage();
+    await elementsPage.clickOnToggleButton();
+    await elementsPage.onlySubcategoriesAreVisible();
+    
+});
+
+Then('the user clicks on the CheckBox button and a message will be displayed stating the selected subcategories', async function ()
+{
+    poManager = new POmanager(this.page);
+    const elementsPage = poManager.getElementsPage();
+    await elementsPage.clickOnCheckBoxButton();
+    await elementsPage.resultFieldIsVisible();
+    
+});
+
+Given('the user lands on the Upload and Download page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const elementsPage = poManager.getElementsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await elementsPage.clickOnUploadAndDownloadPage();
+    
+})
