@@ -1,3 +1,4 @@
+const { AlertsFrameWindowsPage } = require("./AlertsFrameWindowsPage");
 const { ElementsPage } = require("./ElementsPage");
 const { LandingPage } = require("./LandingPage");
 
@@ -9,6 +10,7 @@ constructor(page)
     this.page = page;
     this.landingPage = new LandingPage(this.page);
     this.elementsPage = new ElementsPage(this.page);
+    this.alertsFrameWindowsPage = new AlertsFrameWindowsPage(this.page);
 }
 
 getLandingPage()
@@ -19,6 +21,11 @@ getLandingPage()
 getElementsPage()
 {
     return this.elementsPage;
+}
+
+getAlertsFrameWindowsPage()
+{
+    return this.alertsFrameWindowsPage;
 }
 
 

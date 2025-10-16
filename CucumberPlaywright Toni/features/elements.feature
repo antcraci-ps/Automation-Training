@@ -30,7 +30,7 @@ Feature:Testing different elements
     Then the user clicks on the CheckBox button and a message will be displayed stating the selected subcategories
 
     @test4
-  Scenario: Download and Upload
+  Scenario: Download and Upload // need more info
     Given the user lands on the Upload and Download page
   #   When the user clicks on Download button a sample file will be downloaded and saved on PC
   #   Then the sample file can be found in the Downloads folder

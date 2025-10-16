@@ -183,4 +183,25 @@ Given('the user lands on the Upload and Download page', async function ()
     await landingPage.clickOnCard();
     await elementsPage.clickOnUploadAndDownloadPage();
     
+});
+
+Given('the users lands on Browser Windows page', async function()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await alertsFrameWindowsPage.clickOnAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.clickOnBrowserWindowsPage();
+});
+
+When('the user clicks on New Tab button a new tab will open in browser', async function ()
+{
+    poManager = new POmanager(this.page);
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    // await alertsFrameWindowsPage.clickOnNewTabButton();
+    await alertsFrameWindowsPage.TESTnewTabOpen();
+
+    
 })
