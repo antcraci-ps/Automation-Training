@@ -12,6 +12,9 @@ class AlertsFrameWindowsPage
         this.newTabButton = page.locator('#tabButton');
         this.newWindowButton = page.locator('#windowButton');
         this.newWindowMessageButton = page.locator('#messageWindowButton');
+        // this.alertsPage = page.locator('span:has-text("Alerts")');
+        this.alertsPage = page.getByText('Alerts', { exact: true });
+        this.seeAlertButton = page.locator('#alertButton');
 
 
     }
@@ -31,19 +34,94 @@ class AlertsFrameWindowsPage
         await this.newTabButton.click();
     }
 
-    async TESTnewTabOpen()
+    async clickOnAlertsPage()
     {
-        const [newPage] = await Promise.all
+        await this.alertsPage.click();
+    }
+
+    async clickOnSeeAlertButton()
+    {
+        await this.seeAlertButton.click();
+    }
+
+    async TESTnewTabOpen() // test if promis function is still needed
+    {
+        await this.page.click('#tabButton')
+        const [newTabOpen] = await Promise.all
         ([
             this.page.waitForEvent('popup'),
-            this.page.click('#tabButton'),
+            // this.page.click('#tabButton'),
         ])
 
-        await newPage.waitForLoadState()
-
-        await expect(newPage).toHaveURL('https://demoqa.com/sample')
+        await newTabOpen.waitForLoadState()
+        await expect(newTabOpen).toHaveURL('https://demoqa.com/sample')
+        await newTabOpen.close();
 
         // await this.page.waitForEvent('popup');
+    }
+
+    async TESTnewWindowOpen()
+    {
+        this.page.click('#windowButton');
+        const [newWindowOpen] = await Promise.all
+        ([
+            this.page.waitForEvent('popup'),
+            // this.page.click('#windowButton'),
+        ])
+
+        await newWindowOpen.waitForLoadState();
+        await expect(newWindowOpen).toHaveURL('https://demoqa.com/sample');
+        await newWindowOpen.close();
+
+    }
+
+    async TESTnewWindowsMessageOpen()
+    {
+        this.page.click('#messageWindowButton');
+        const [newWindowsMessageOpen] = await Promise.all
+        ([
+            this.page.waitForEvent('popup'),
+            // this.page.click('messageWindowButton'),
+        ])
+
+        await newWindowsMessageOpen.waitForLoadState();
+                        
+        console.log(await newWindowsMessageOpen.content());
+        
+        await newWindowsMessageOpen.close();
+    }
+
+    async acceptAlertDialogue()
+    {
+        // this.page.click('#alertButton');
+        
+        // this.page.on('alert', async alert => {
+        // console.log(alert.message()); // Optional: log the message
+        // await alert.accept();         // Accept the dialog (click "OK")
+        
+  
+        // });
+
+        this.page.click('#alertButton');
+        // const [newWindowOpen] = await Promise.all
+        // ([
+        //     this.page.waitForEvent('dialog'),
+        //     // this.page.click('#windowButton'),
+        // ])
+
+        // await newWindowOpen.waitForLoadState();
+        this.page.waitForEvent('dialog');
+        // this.page.getByText('OK').click();
+
+        console.log('ojbihvugcyfxtzeryctuvyibuovyictuxyrtzertdexyfcguv');
+        
+        // this code works somehow
+
+    }
+
+    async dialoguePopUp()
+    {
+        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
     }
 
 

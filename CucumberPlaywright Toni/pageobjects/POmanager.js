@@ -1,6 +1,7 @@
 const { AlertsFrameWindowsPage } = require("./AlertsFrameWindowsPage");
 const { ElementsPage } = require("./ElementsPage");
 const { LandingPage } = require("./LandingPage");
+const { WidgetsPage } = require("./WidgetsPage");
 
 class POmanager
 {
@@ -11,6 +12,7 @@ constructor(page)
     this.landingPage = new LandingPage(this.page);
     this.elementsPage = new ElementsPage(this.page);
     this.alertsFrameWindowsPage = new AlertsFrameWindowsPage(this.page);
+    this.widgetsPage = new WidgetsPage(this.page);
 }
 
 getLandingPage()
@@ -26,6 +28,11 @@ getElementsPage()
 getAlertsFrameWindowsPage()
 {
     return this.alertsFrameWindowsPage;
+}
+
+getWidgetsPage()
+{
+    return this.widgetsPage;
 }
 
 

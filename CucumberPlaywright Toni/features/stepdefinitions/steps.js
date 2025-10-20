@@ -201,7 +201,95 @@ When('the user clicks on New Tab button a new tab will open in browser', async f
     poManager = new POmanager(this.page);
     const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
     // await alertsFrameWindowsPage.clickOnNewTabButton();
-    await alertsFrameWindowsPage.TESTnewTabOpen();
+    await alertsFrameWindowsPage.TESTnewTabOpen();    
+});
 
+Then('the user clicks on New Window button and a new window will open', async function ()
+{
+    poManager = new POmanager(this.page);
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.TESTnewWindowOpen();
+});
+
+When('the user clicks on New Window Message button a new window with sample text will open', async function ()
+{
+    poManager = new POmanager(this.page);
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.TESTnewWindowsMessageOpen();
+});
+
+Given('the user lands on Alerts page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await alertsFrameWindowsPage.clickOnAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.clickOnAlertsPage();   
+})
+
+When('the user clicks on the Click Me button', async function ()
+{
+    poManager = new POmanager(this.page);
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.clickOnSeeAlertButton();
+    await alertsFrameWindowsPage.acceptAlertDialogue();
+    
+});
+
+Then('an Alert will pop up', async function ()
+{
+    poManager = new POmanager(this.page);
+    const alertsFrameWindowsPage = poManager.getAlertsFrameWindowsPage();
+    await alertsFrameWindowsPage.dialoguePopUp();
+});
+
+Given('the user lands on the Accordian page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const widgetsPage = poManager.getWidgetsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await widgetsPage.clickOnWidgetsPage();
+    await widgetsPage.clickOnAccordianPage();
+    
+});
+
+When('the user clicks on all the accordian tabs', async function ()
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.clickSection1Accordion();
+    await widgetsPage.clickSection2Accordion();
+    await widgetsPage.clickSection3Accordion();
+});
+
+Then('the text will be visible inside the tabs', async function ()
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.clickSection1Accordion();
+    await widgetsPage.checkSection1Text();
+});
+
+Given('the user lands on the Date Picker page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const widgetsPage = poManager.getWidgetsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await widgetsPage.clickOnWidgetsPage();
+    await widgetsPage.clickOnDatePickerPage();
+    
+});
+
+When('the user selects the desired date from Select Date field', async function()
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.clickOnSelectDateDropdown();
     
 })
