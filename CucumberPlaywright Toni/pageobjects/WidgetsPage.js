@@ -17,7 +17,8 @@ constructor (page)
     this.section2Text = page.locator('#section2Content');
     this.section3Text = page.locator('#section3Content');
     this.datePickerPage = page.getByText('Date Picker');
-    this.selectDateDrpdwn = page.locator('##datePickerMonthYearInput');
+    this.selectDateDrpdwn = page.locator('#datePickerMonthYearInput');
+    this.selectDateAndTimeDrpdwn = page.locator('#dateAndTimePickerInput');
 
 }
 
@@ -59,9 +60,35 @@ async clickOnDatePickerPage()
 async clickOnSelectDateDropdown()
 {
     await this.selectDateDrpdwn.click();
+
 }
 
+async selectBirthday(birthday)
+{
+    await this.selectDateDrpdwn.fill(birthday);
+}
 
+async checkBirthday(birthday)
+{
+    await expect(this.selectDateDrpdwn).toHaveValue(birthday);
+
+}
+
+async clickOnDateAndTimeDropdown()
+{
+    await this.selectDateAndTimeDrpdwn.click();
+
+}
+
+async selectDateAndTime(date_time)
+{
+    await this.selectDateAndTimeDrpdwn.fill(date_time);
+}
+
+async checkDateAndTime(date_time)
+{
+    await expect(this.selectDateAndTimeDrpdwn).toHaveValue(date_time);
+}
 
 
 

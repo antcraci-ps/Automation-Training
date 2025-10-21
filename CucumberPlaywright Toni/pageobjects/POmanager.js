@@ -1,5 +1,6 @@
 const { AlertsFrameWindowsPage } = require("./AlertsFrameWindowsPage");
 const { ElementsPage } = require("./ElementsPage");
+const { InteractionsPage } = require("./InteractionsPage");
 const { LandingPage } = require("./LandingPage");
 const { WidgetsPage } = require("./WidgetsPage");
 
@@ -13,6 +14,7 @@ constructor(page)
     this.elementsPage = new ElementsPage(this.page);
     this.alertsFrameWindowsPage = new AlertsFrameWindowsPage(this.page);
     this.widgetsPage = new WidgetsPage(this.page);
+    this.intaractionsPage = new InteractionsPage(this.page);
 }
 
 getLandingPage()
@@ -33,6 +35,11 @@ getAlertsFrameWindowsPage()
 getWidgetsPage()
 {
     return this.widgetsPage;
+}
+
+getInteractionsPage()
+{
+    return this.intaractionsPage;
 }
 
 

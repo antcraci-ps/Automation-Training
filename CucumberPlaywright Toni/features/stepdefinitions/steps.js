@@ -286,10 +286,37 @@ Given('the user lands on the Date Picker page', async function ()
     
 });
 
-When('the user selects the desired date from Select Date field', async function()
+When('the user selects the desired date from Select Date field {string}', async function(birthday)
 {
     poManager = new POmanager(this.page);
     const widgetsPage = poManager.getWidgetsPage();
     await widgetsPage.clickOnSelectDateDropdown();
+    await widgetsPage.selectBirthday(birthday);
+    
+});
+
+Then('the field will display the correct date {string}', async function (birthday)
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.checkBirthday(birthday);
+    await widgetsPage.clickOnWidgetsPage();
+     
+});
+
+When('the user picks the date and time from Date and Time field {string}', async function (date_time)
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.clickOnDateAndTimeDropdown();
+    await widgetsPage.selectDateAndTime(date_time);
+    
+});
+
+Then('the fiel will display the correct date and time {string}', async function (date_time)
+{
+    poManager = new POmanager(this.page);
+    const widgetsPage = poManager.getWidgetsPage();
+    await widgetsPage.checkDateAndTime(date_time);
     
 })
