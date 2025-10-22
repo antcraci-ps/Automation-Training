@@ -319,4 +319,33 @@ Then('the fiel will display the correct date and time {string}', async function 
     const widgetsPage = poManager.getWidgetsPage();
     await widgetsPage.checkDateAndTime(date_time);
     
+});
+
+Given('the user lands on Droppable page', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const interactionsPage = poManager.getInteractionsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await interactionsPage.clickOnInteractionsPage();
+    await interactionsPage.clickOnDroppablePage();
+    
+});
+
+When('the user click and drags the Drag Me box to the Drop Here zone', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.checkDragAndDropAreVisible();
+    await interactionsPage.dragAndDropAction();
+    
+});
+
+Then('the message from the dropping zone will be displayed as Dropped!', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.checkDropBoxMessage();
+    
 })
