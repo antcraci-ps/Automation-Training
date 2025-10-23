@@ -13,6 +13,12 @@ constructor (page)
     this.droppablePage = page.getByText('Droppable');
     this.draggableBox = page.locator('#draggable');
     this.droppableBox = page.locator('#droppable').nth(0);
+    this.acceptTab = page.locator('#droppableExample-tab-accept');
+    this.notAcceptableBox = page.locator('#notAcceptable');
+    this.droppableBoxAccept = page.locator('#droppable').nth(1);
+    this.acceptableBox = page.locator('#acceptable');
+
+    this.TEST = page.locator('#acceptDropContainer');
 
 
 }
@@ -43,6 +49,38 @@ async checkDragAndDropAreVisible()
 async checkDropBoxMessage()
 {
     await expect(this.droppableBox).toContainText('Dropped!');
+}
+
+async clickOnAcceptTab()
+{
+    await this.acceptTab.click();
+}
+
+async dragNotAcceptableToDropZone()
+{
+    await this.notAcceptableBox.dragTo(this.droppableBoxAccept);
+}
+
+async dragTEST()
+{
+    await this.notAcceptableBox.dragTo(this.TEST);
+}
+
+async checkDropBoxNotAcceptMessage()
+{
+    await expect(this.droppableBoxAccept).toBeVisible();
+    await expect(this.droppableBoxAccept).toContainText('Drop here');
+}
+
+async dragAcceptableToDropZone()
+{
+    await this.acceptableBox.dragTo(this.droppableBoxAccept);
+}
+
+async checkDropBoxAcceptMessage()
+{
+    await expect(this.droppableBoxAccept).toBeVisible();
+    await expect(this.droppableBoxAccept).toContainText('Dropped!');
 }
 
 

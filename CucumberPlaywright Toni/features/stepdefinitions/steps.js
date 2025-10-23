@@ -348,4 +348,50 @@ Then('the message from the dropping zone will be displayed as Dropped!', async f
     const interactionsPage = poManager.getInteractionsPage();
     await interactionsPage.checkDropBoxMessage();
     
+});
+
+Given('the user lands on Droppable page and navigates to Accept tab', async function ()
+{
+    poManager = new POmanager(this.page);
+    const landingPage = poManager.getLandingPage();
+    const interactionsPage = poManager.getInteractionsPage();
+    await landingPage.goTo();
+    await landingPage.clickOnCard();
+    await interactionsPage.clickOnInteractionsPage();
+    await interactionsPage.clickOnDroppablePage();
+    await interactionsPage.clickOnAcceptTab();
+    
+});
+
+When('the user drags the Not Acceptable box into the Drop Zone', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.dragNotAcceptableToDropZone();
+    
+});
+
+Then('the Drop Zone confirmation message is not visible', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.checkDropBoxNotAcceptMessage();
+    await interactionsPage.dragTEST();
+    
+});
+
+When('the user drags the Acceptable box into the Drop Zone', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.dragAcceptableToDropZone();
+    
+});
+
+Then('the Drop Zone confirmation message is visible', async function ()
+{
+    poManager = new POmanager(this.page);
+    const interactionsPage = poManager.getInteractionsPage();
+    await interactionsPage.checkDropBoxAcceptMessage();
+    
 })
